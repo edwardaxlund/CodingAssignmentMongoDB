@@ -18,5 +18,5 @@ public abstract class ShoppingCart implements IShoppingCart {
     
 
 
-    public abstract void printReceipt();
+    abstract public void printReceipt();
 }

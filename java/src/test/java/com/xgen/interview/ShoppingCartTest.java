@@ -14,11 +14,11 @@ import static org.junit.Assert.assertEquals;
 
 public class ShoppingCartTest {
 
-    private ShoppingCart sc;
+    private ShoppingCart scSweden;
 
     @Before
     public void setUp(){
-        sc = new ShoppingCartSweden(new Pricer());
+        scSweden = new ShoppingCartSweden(new Pricer());
     }
     
     
@@ -28,36 +28,36 @@ public class ShoppingCartTest {
         final ByteArrayOutputStream myOut = new ByteArrayOutputStream();
         System.setOut(new PrintStream(myOut));
 
-        sc.addItem("apple", 1);
+        scSweden.addItem("apple", 1);
 
 
-        sc.printReceipt();
+        scSweden.printReceipt();
         assertEquals(String.format("apple - 1 - €1.00%nThank you for shopping with us, your total was €1.00%n"), myOut.toString());
     }
 
     @Test
     public void canAddMoreThanOneItem() {
 
-        sc.addItem("apple", 2);
+        scSweden.addItem("apple", 2);
 
         final ByteArrayOutputStream myOut = new ByteArrayOutputStream();
         System.setOut(new PrintStream(myOut));
 
-        sc.printReceipt();
+        scSweden.printReceipt();
         assertEquals(String.format("apple - 2 - €2.00%nThank you for shopping with us, your total was €2.00%n"), myOut.toString());
     }
 
     @Test
     public void canAddDifferentItemsInOrder() {
 
-        sc.addItem("apple", 2);
-        sc.addItem("banana", 1);
-        sc.addItem("orange", 2);
+        scSweden.addItem("apple", 2);
+        scSweden.addItem("banana", 1);
+        scSweden.addItem("orange", 2);
 
         final ByteArrayOutputStream myOut = new ByteArrayOutputStream();
         System.setOut(new PrintStream(myOut));
 
-        sc.printReceipt();
+        scSweden.printReceipt();
 
         String result = myOut.toString();
 
@@ -67,15 +67,15 @@ public class ShoppingCartTest {
     
     }
 
-        @Test
+    @Test
     public void doesntExplodeOnMysteryItem() {
 
-        sc.addItem("crisps", 2);
+        scSweden.addItem("crisps", 2);
 
         final ByteArrayOutputStream myOut = new ByteArrayOutputStream();
         System.setOut(new PrintStream(myOut));
 
-        sc.printReceipt();
+        scSweden.printReceipt();
         assertEquals(String.format("crisps - 2 - €0.00%nThank you for shopping with us, your total was €0.00%n"), myOut.toString());
     }
 }
