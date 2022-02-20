@@ -1,12 +1,12 @@
 package com.xgen.interview;
 
-
 import java.util.*;
 
-public class ShoppingCartSweden extends ShoppingCart {
+
+public class ShoppingCartNorway extends ShoppingCart {
     private Map<String, Integer> contents = new LinkedHashMap<>();
 
-    public ShoppingCartSweden(Pricer pricer){
+    public ShoppingCartNorway(Pricer pricer){
         super(pricer);
     }
 
@@ -27,9 +27,9 @@ public class ShoppingCartSweden extends ShoppingCart {
             double priceDouble = Double.valueOf(price) / 100;
             total = total + priceDouble; 
             String priceString = String.format(Locale.ENGLISH,"€%.2f", priceDouble);
-            System.out.println(item.getKey() + " - " + contents.get(item.getKey()) + " - " + priceString);
+            System.out.println(contents.get(item.getKey()) + " - " + item.getKey() + " - " + priceString);
         }
-        
+
         System.out.println("Thank you for shopping with us, your total was " + String.format(Locale.ENGLISH,"€%.2f",total));
 
 
